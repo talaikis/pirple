@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "standard",
+        "plugin:security/recommended"
+    ],
+    "plugins": [
+        "security"
+    ],
+    "rules": {
+        "standard/no-callback-literal": 0,
+        "node/no-deprecated-api": ["error", {
+            "ignoreModuleItems": [
+                "url.parse",
+                "crypto.createCipher",
+                "crypto.createDecipher"
+            ],
+            "ignoreGlobalItems": []
+        }],
+        "no-buffer-constructor": "error"
+    }
+}

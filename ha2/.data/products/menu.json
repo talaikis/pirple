@@ -1,0 +1,8 @@
+{
+    "0": { "name": "Chicago Pizza", "price": 10.99 },
+    "1": { "name": "New York Style Pizza", "price": 20.99 },
+    "2": { "name": "Sicilian Pizza", "price": 3.99 },
+    "3": { "name": "Greek Pizza", "price": 6.99 },
+    "4": { "name": "California Pizza", "price": 15.99 },
+    "5": { "name": "Tomato Pie", "price": 13.99 }
+}

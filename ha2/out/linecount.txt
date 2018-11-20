@@ -1,0 +1,75 @@
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2018-11-15 20:22:18
+count workspace : c:\Users\DXenu\Desktop\box\uptime_bot
+total files : 63
+total code lines : 6135
+total comment lines : 42
+total blank lines : 236
+
+.data\.gitkeep, code is 0, comment is 0, blank is 0.
+.data\assets\logo.png, it is a binary file.
+.data\tokens\.gitkeep, code is 0, comment is 0, blank is 0.
+.data\tokens\026ca123-7c6e-4700-ae6a-6e16433b8e5f.json, code is 1, comment is 0, blank is 0.
+.data\tokens\0926ba71-dfd7-4902-833a-4590ed502602.json, code is 1, comment is 0, blank is 0.
+.data\tokens\5706683d-572d-404a-9065-abc8a61310f1.json, code is 1, comment is 0, blank is 0.
+.data\tokens\706c2ecb-2ff1-4b09-a114-297cad1add27.json, code is 1, comment is 0, blank is 0.
+.data\tokens\89dbc4e8-7aab-4791-806a-939c588d9e58.json, code is 1, comment is 0, blank is 0.
+.data\tokens\98b3eaff8c14e1ea7c8ed75431a283570758ff71f12b21a60dfc01251b9f6f97.json, code is 1, comment is 0, blank is 0.
+.data\tokens\b4b90fe0-17b1-4b0b-b6bb-b6cfef7b6875.json, code is 1, comment is 0, blank is 0.
+.data\tokens\c357025d-4e7a-4e0f-99f3-219d80ee4797.json, code is 1, comment is 0, blank is 0.
+.data\urls\.gitkeep, code is 0, comment is 0, blank is 0.
+.data\users\.gitkeep, code is 0, comment is 0, blank is 0.
+.data\users\37061415694.json, code is 1, comment is 0, blank is 0.
+.eslintrc.json, code is 14, comment is 0, blank is 1.
+.gitignore, code is 11, comment is 0, blank is 2.
+.logs\.gitkeep, code is 0, comment is 0, blank is 0.
+.node-version, code is 1, comment is 0, blank is 0.
+.nvmrc, code is 1, comment is 0, blank is 0.
+certs\cert.pem, code is 21, comment is 0, blank is 0.
+certs\dhparam.pem, code is 13, comment is 0, blank is 0.
+certs\key.pem, code is 28, comment is 0, blank is 0.
+config.js, code is 55, comment is 0, blank is 2.
+handlers\generics\index.js, code is 6, comment is 0, blank is 1.
+handlers\generics\notFound.js, code is 4, comment is 0, blank is 1.
+handlers\generics\ping.js, code is 4, comment is 0, blank is 1.
+handlers\index.js, code is 14, comment is 0, blank is 2.
+handlers\token\index.js, code is 112, comment is 1, blank is 10.
+handlers\urls\index.js, code is 176, comment is 0, blank is 13.
+handlers\users\index.js, code is 162, comment is 1, blank is 13.
+index.js, code is 9, comment is 0, blank is 4.
+keygen.sh, code is 2, comment is 1, blank is 1.
+lib\data\functions.js, code is 70, comment is 1, blank is 9.
+lib\data\helpers.js, code is 23, comment is 0, blank is 2.
+lib\data\index.js, code is 14, comment is 0, blank is 1.
+lib\data\utils.js, code is 23, comment is 0, blank is 3.
+lib\data\vars.js, code is 45, comment is 0, blank is 5.
+lib\debug\debug.js, code is 35, comment is 0, blank is 4.
+lib\debug\index.js, code is 7, comment is 0, blank is 1.
+lib\debug\logs.js, code is 121, comment is 0, blank is 12.
+lib\email\index.js, code is 4, comment is 0, blank is 1.
+lib\email\mailgun.js, code is 54, comment is 15, blank is 11.
+lib\index.js, code is 34, comment is 0, blank is 1.
+lib\math\index.js, code is 18, comment is 3, blank is 3.
+lib\merchants\index.js, code is 4, comment is 0, blank is 1.
+lib\merchants\stripe.js, code is 45, comment is 0, blank is 10.
+lib\phone\index.js, code is 4, comment is 0, blank is 1.
+lib\phone\twilio.js, code is 47, comment is 0, blank is 10.
+lib\security\index.js, code is 54, comment is 0, blank is 12.
+lib\server\index.js, code is 71, comment is 0, blank is 15.
+lib\utils\colors.js, code is 26, comment is 0, blank is 3.
+lib\utils\index.js, code is 9, comment is 0, blank is 1.
+lib\utils\utils.js, code is 46, comment is 0, blank is 5.
+lib\workers\index.js, code is 12, comment is 0, blank is 3.
+lib\workers\logs\index.js, code is 30, comment is 0, blank is 5.
+lib\workers\tokens\index.js, code is 48, comment is 0, blank is 5.
+lib\workers\urls\index.js, code is 102, comment is 2, blank is 19.
+package-lock.json, code is 4400, comment is 0, blank is 0.
+package.json, code is 32, comment is 0, blank is 0.
+README.md, code is 86, comment is 18, blank is 36.
+router\index.js, code is 11, comment is 0, blank is 2.
+start.js, code is 4, comment is 0, blank is 1.
+tests\index.js, code is 14, comment is 0, blank is 3.
+===============================================================================
