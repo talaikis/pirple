@@ -53,12 +53,14 @@ There are many other unrelated to this exact project routes and configs.
 ## Run
 
 ```bash
+npm i
 npm run start
 ```
 
 ## Debug
 
 ```bash
+npm i
 npm run start:debug
 ```
 
