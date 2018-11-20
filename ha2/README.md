@@ -43,6 +43,8 @@ There are many other unrelated to this exact project routes and configs.
 * Add user.updatedAt at confirms, etc.
 * Don't allow to login if unconfirmed
 * Better (i.e. universal) JOINs.
+* Encrypt user data.
+* Move all secrets to environment.
 
 ## Features
 
@@ -154,7 +156,8 @@ npm run start:debug
 // needs auth token
 
 {
-  "urlId": "37061415694"
+  "phone": "37061415694",
+  "urlId": "d668af45-6a81-4767-8b73-b8cf3ecc8dc9",
 }
 
 // PUT /urls
@@ -166,14 +169,16 @@ npm run start:debug
     "url": "google2.com",
     "method": "GET",
     "successCodes": [200, 201, 301],
-    "timeout": 5
+    "timeout": 5,
+    "phone": "37061415694"
 }
 
 // DELETE /urls
 // needs auth token
 
 {
-    "urlId": "d668af45-6a81-4767-8b73-b8cf3ecc8dc9"
+    "urlId": "d668af45-6a81-4767-8b73-b8cf3ecc8dc9",
+    "phone": "37061415694"
 }
 ```
 
@@ -230,7 +235,8 @@ Get menu.
 // needs auth
 
 {
-    "action": "get"
+    "action": "get",
+    "phone": "37061415694"
 }
 ```
 
