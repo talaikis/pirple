@@ -1,6 +1,5 @@
-import { dataLib, hash, tokenHeader, userObj, validPhone, finalizeRequest, sendSMS, randomID,
+import { dataLib, hash, joinDelete, userObj, validPhone, finalizeRequest, sendSMS, randomID,
   sendEmail, error, auth, log } from '../../lib'
-import { tokens } from '../token'
 import { config } from '../../config'
 
 const users = (data, callback) => {
@@ -119,7 +118,8 @@ users.createUser = (obj, callback) => {
         phone: false
       },
       registeredAt: now,
-      updatedAt: now
+      updatedAt: now,
+      role: 'user'
     }
 
     dataLib.create('users', obj.phone, newObj, (err) => {
@@ -250,32 +250,28 @@ _users.delete = (data, callback) => {
         dataLib.read('users', phone, (err, userData) => {
           if (!err && userData) {
             const urls = typeof userData.urls === 'object' && Array.isArray(userData.urls) ? userData.urls : []
+            const refs = typeof userData.referred === 'object' && Array.isArray(userData.referred) ? userData.referred : []
+            const orders = typeof userData.orders === 'object' && Array.isArray(userData.orders) ? userData.orders : []
+
             dataLib.delete('users', phone, (err) => {
               if (!err) {
-                const urlsToDelete = urls.length
-                if (urlsToDelete > 0) {
-                  let urlsDeleted = 0
-                  let deletionErrors = false
-                  urls.forEach((id) => {
-                    dataLib.delete('urls', id, (err) => {
-                      if (!err) {
-                        urlsDeleted += 1
+                joinDelete('urls', urls, (err) => {
+                  if (err) {
+                    error(err)
+                  }
+                  joinDelete('refers', refs, (err) => {
+                    if (err) {
+                      error(err)
+                    }
+                    joinDelete('orders', orders, (err) => {
+                      if (err) {
+                        error(err)
                       } else {
-                        deletionErrors = true
-                      }
-
-                      if (urlsDeleted === urlsToDelete) {
-                        if (!deletionErrors) {
-                          callback(200)
-                        } else {
-                          callback(500, { error: 'Error occured when deleting some of user URLs.' })
-                        }
+                        callback(200)
                       }
                     })
                   })
-                } else {
-                  callback(200)
-                }
+                })
               } else {
                 callback(500, { error: 'Could not delete user.' })
               }

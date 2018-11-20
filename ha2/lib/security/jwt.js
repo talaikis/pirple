@@ -10,7 +10,7 @@ const algo = 'SHA256'
 const pkObj = {
   privateKey: {
     key: privateKey,
-    passphrase: config.PrivateKeySecret
+    passphrase: config.privateKeySecret
   }
 }
 

@@ -38,8 +38,21 @@ _orders.get_orders = (data, callback) => {
   auth(data, (tokenData) => {
     if (tokenData) {
       dataLib.read('users', tokenData.phone, (err, data) => {
-        if (!err && data) {
-          callback(200, data.orders)
+        if (!err && data.orders.length > 0) {
+          dataLib.read('prodducts', 'menu', (err, menu) => {
+            if (!err && menu) {
+              const out = []
+              data.orders.forEach((i) => {
+                out.push(menu[i])
+              })
+
+              if (data.orders.length === out.length) {
+                callback(200, out)
+              }
+            } else {
+              callback(500, { error: 'Cannot read menu.' })
+            }
+          })
         } else {
           callback(500, { error: 'Cannot read user orders.' })
         }
@@ -97,6 +110,7 @@ orders.delete = (tokenData, callback) => {
   dataLib.read('users', tokenData.phone, (err, userData) => {
     if (!err && userData.cart.length > 0) {
       userData.cart = []
+      userData.updatedAt = Date.now()
       dataLib.update('users', tokenData.phone, userData, (err) => {
         if (!err) {
           callback(false)
@@ -167,6 +181,7 @@ _orders.buy = (data, callback) => {
               dataLib.create('orders', orderId, obj, (err) => {
                 if (!err) {
                   userData.orders.push(orderId)
+                  userData.updatedAt = Date.now()
                   dataLib.update('users', tokenData.phone, userData, (err) => {
                     if (!err) {
                       charge(orderId, finalAmount, token, (err) => {

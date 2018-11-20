@@ -67,19 +67,13 @@ _refer.refer = (data, callback) => {
         if (!err && data) {
           refer.generateToken(uo.phone, (err, refToken) => {
             if (!err) {
-              let newData = userData
-              newData.referred.push(refToken)
+              userData.referred.push(refToken)
+              userData.updatedAt = Date.now()
 
               const referringUser = `${userData.firstName} ${userData.lastName} <${userData.email}>`
               refer.sendEmail(refEmail, refToken, referringUser, (err) => {
                 if (!err) {
-                  dataLib.update('users', uo.phone, newData, (err) => {
-                    if (!err) {
-                      callback(200)
-                    } else {
-                      callback(400, { error: 'No such user.' })
-                    }
-                  })
+                  finalizeRequest('users', uo.phone, 'update', callback, userData)
                 } else {
                   callback(400, { error: `Cannot send referral email: ${err}` })
                 }
@@ -136,6 +130,7 @@ _refer.register = (data, callback) => {
           if (!err && tokenData) {
             if (!userData.referred.includes(token)) {
               userData.referred.push(token)
+              userData.updatedAt = Date.now()
               dataLib.update('users', phone, userData, (err) => {
                 if (!err) {
                   tokenData.finalized = true

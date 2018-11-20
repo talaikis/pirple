@@ -165,6 +165,7 @@ _urls.delete = (data, callback) => {
                 if (pos > -1) {
                   urls.splice(pos, 1)
                   userData.urls = urls
+                  userData.updatedAt = Date.now()
                   dataLib.update('users', urlData.phone, userData, (err) => {
                     if (!err) {
                       finalizeRequest('urls', id, 'delete', callback)

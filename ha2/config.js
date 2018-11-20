@@ -36,7 +36,7 @@ const dev = {
     unconfirmedClean: 60 * 60 * 3
   },
   tokenExpiry: 60 * 60,
-  PrivateKeySecret: 'rsasecret',
+  privateKeySecret: 'rsasecret',
   mainConfirm: 'email',
   paymentProcessor: 'stripe'
 }
@@ -80,7 +80,7 @@ const prod = {
     unconfirmedClean: 60 * 60 * 3
   },
   tokenExpiry: 60 * 60,
-  PrivateKeySecret: 'rsasecret',
+  privateKeySecret: 'rsasecret',
   mainConfirm: 'email',
   paymentProcessor: 'stripe'
 }

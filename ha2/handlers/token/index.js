@@ -34,22 +34,27 @@ _tokens.post = (data, callback) => {
   if (uo.phone && uo.password) {
     dataLib.read('users', uo.phone, (err, data) => {
       if (!err) {
-        if (hash(uo.password) === data.password) {
-          randomID(32, (tokenId) => {
-            if (tokenId) {
-              const expiry = Date.now() + 1000 * config.tokenExpiry
-              const tokenObj = {
-                expiry,
-                tokenId,
-                phone: uo.phone
+        if (data.confirmed.email || data.confirmed.phone) {
+          if (hash(uo.password) === data.password) {
+            randomID(32, (tokenId) => {
+              if (tokenId) {
+                const expiry = Date.now() + 1000 * config.tokenExpiry
+                const tokenObj = {
+                  expiry,
+                  tokenId,
+                  role: data.role,
+                  phone: uo.phone
+                }
+                finalizeRequest('tokens', tokenId, 'create', callback, tokenObj)
+              } else {
+                callback(400, { error: 'Cannot get unique ID.' })
               }
-              finalizeRequest('tokens', tokenId, 'create', callback, tokenObj)
-            } else {
-              callback(400, { error: 'Cannot get unique ID.' })
-            }
-          })
+            })
+          } else {
+            callback(401, { error: 'Invalid password.' })
+          }
         } else {
-          callback(400, { error: 'Invalid password.' })
+          callback(400, { error: 'User\'s account is not confirmed.' })
         }
       } else {
         callback(400, { error: 'Cannot find specified user.' })

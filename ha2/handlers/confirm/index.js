@@ -1,4 +1,4 @@
-import { dataLib, randomID, hash, sendEmail, log, error } from '../../lib'
+import { dataLib, randomID, hash, sendEmail, log, error, finalizeRequest } from '../../lib'
 import { config } from '../../config'
 
 const token = (data) => {
@@ -45,6 +45,7 @@ _confirm.post = (data, callback) => {
                   randomID(16, (password) => {
                     if (password) {
                       userData.password = hash(password)
+                      userData.updatedAt = Date.now()
                       confirm.sendNewPassword(userData.email, password, (err) => {
                         if (!err) {
                           log('Email sent', 'FgGreen')
@@ -60,13 +61,7 @@ _confirm.post = (data, callback) => {
                   userData.confirmed[tokenData.type] = true
                 }
 
-                dataLib.update('users', tokenData.phone, userData, (err) => {
-                  if (!err) {
-                    callback(200)
-                  } else {
-                    callback(500, { error: 'Cannot update user.' })
-                  }
-                })
+                finalizeRequest('users', tokenData.phone, 'update', callback, userData)
               } else {
                 callback(400, { error: 'No such user.' })
               }

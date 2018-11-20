@@ -19,7 +19,7 @@ const keyPair = () => {
       type: 'pkcs1',
       format: 'pem',
       cipher: 'aes-256-cbc',
-      passphrase: config.PrivateKeySecret
+      passphrase: config.privateKeySecret
     }
   }
 
